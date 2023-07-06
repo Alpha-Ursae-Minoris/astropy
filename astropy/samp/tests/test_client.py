@@ -35,7 +35,7 @@ def samp_hub(request):
     """A fixture that can be used by client tests that require a HUB."""
     my_hub = SAMPHubServer()
     my_hub.start()
-    request.addfinalizer(my_hub.stop)
+    yield my_hub.stop
 
 
 def test_SAMPIntegratedClient_notify_all(samp_hub):
